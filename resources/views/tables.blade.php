@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-  <title>SB Admin - Start Bootstrap Template</title>
+  <title>BdU Online</title>
   <!-- Bootstrap core CSS-->
   <link href="{{URL::to('/')}}/theme/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <!-- Custom fonts for this template-->
@@ -16,6 +16,7 @@
   <link href="{{URL::to('/')}}/theme/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
   <!-- Custom styles for this template-->
   <link href="{{URL::to('/')}}/theme/css/sb-admin.css" rel="stylesheet">
+
 </head>
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
@@ -233,28 +234,54 @@
       <!-- Example DataTables Card-->
       <div class="card mb-3">
         <div class="card-header">
-          <i class="fa fa-table"></i> Data Table Example</div>
+          <i class="fa fa-table"></i> Tabella delle commissioni pareri</div>
         <div class="card-body">
           <div class="table-responsive">
-            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <table class="table table-bordered table-sm table-striped table-hover" id="dataTable" width="100%" cellspacing="0">
               <thead>
                 <tr>
+                  <th>Controllo Flag</th>
+                  <th>Flag Export</th>
+                  <th>Id_Cp</th>
+                  <th>Codice Us</th>
                   <th>AQBCE</th>
-                  <th>Ubicazione</th>
                   <th>Stato</th>
+                  <th>US</th>
                   <th>Commissione Pareri</th>
+                  <th>Data Commissione</th>
                   <th>Esito</th>
-                  <th>Data Commissione Pareri</th>
+                  <th>Richiesta pp</th>
+                  <th>Notifica parere finale</th>
+                  <th>Scadenza 30 giorni</th>
+                  <th>Note</th>
+                  <th>Edificio Incongruo</th>
+                  <th>Argomenti discussi</th>
+                  <th>Ubicazione</th>
+                  <th>Indirizzo Presidente</th>
+                  <th>Indirizzi Tecnici</th>
                 </tr>
               </thead>
               <tfoot>
                 <tr>
+                  <th>Controllo Flag</th>
+                  <th>Flag Export</th>
+                  <th>Id_Cp</th>
+                  <th>Codice Us</th>
                   <th>AQBCE</th>
-                  <th>Ubicazione</th>
                   <th>Stato</th>
+                  <th>US</th>
                   <th>Commissione Pareri</th>
+                  <th>Data Commissione</th>
                   <th>Esito</th>
-                  <th>Data Commissione Pareri</th>
+                  <th>Richiesta pp</th>
+                  <th>Notifica parere finale</th>
+                  <th>Scadenza 30 giorni</th>
+                  <th>Note</th>
+                  <th>Edificio Incongruo</th>
+                  <th>Argomenti discussi</th>
+                  <th>Ubicazione</th>
+                  <th>Indirizzo Presidente</th>
+                  <th>Indirizzi Tecnici</th>
                 </tr>
               </tfoot>
               
@@ -270,12 +297,25 @@
 					foreach ($pareri as $parere):
 			    ?>
 			    <tr>
+			        <td><?php echo $parere->controllo_flag; ?></td>
+			        <td><?php echo $parere->flag_export; ?></td>
+			        <td><?php echo $parere->id_cp; ?></td>
+			        <td><?php echo $parere->cod_us; ?></td>
 			        <td><?php echo $parere->aqbce; ?></td>
-			        <td><?php echo $parere->ubicazione; ?></td>
 			        <td><?php echo $parere->stato; ?></td>
-			        <td><?php echo $parere->cp; ?></td>
-			        <td><?php echo $parere->esito; ?></td>
+      			    <td><?php echo $parere->us; ?></td>
+			        <td><?php echo $parere->numero_cp; ?></td>
 			        <td><?php echo $parere->data_cp; ?></td>
+			        <td><?php echo $parere->esito; ?></td>
+			        <td><?php echo $parere->richiesta_progetto_preliminare; ?></td>
+			        <td><?php echo $parere->notifica_parere_finale; ?></td>
+    			    <td><?php echo $parere->scadenza_30_giorni; ?></td>
+			        <td><?php echo $parere->note; ?></td>
+			        <td><?php echo $parere->edificio_incongruo; ?></td>
+			        <td><?php echo $parere->argomenti_discussi; ?></td>
+			        <td><?php echo $parere->ubicazione; ?></td>
+			        <td><?php echo $parere->indirizzo_presidente; ?></td>
+			        <td><?php echo $parere->indirizzo_tecnici; ?></td>
 			   </tr>
 					<?php endforeach; ?>
 				
@@ -330,6 +370,32 @@
     <script src="{{URL::to('/')}}/theme/js/sb-admin.min.js"></script>
     <!-- Custom scripts for this page-->
     <script src="{{URL::to('/')}}/theme/js/sb-admin-datatables.min.js"></script>
+      <script>
+  $(document).ready(function() {
+    // Setup - add a text input to each footer cell
+    $('#dataTable tfoot th').each( function () {
+        var title = $(this).text();
+        //$(this).html( '<input type="text" placeholder="Search '+title+'" />' );
+        $(this).html( '<input type="text" placeholder="Search" />' );
+    } );
+ 
+    // DataTable
+    var table = $('#dataTable').DataTable();
+ 
+    // Apply the search
+    table.columns().every( function () {
+        var that = this;
+ 
+        $( 'input', this.footer() ).on( 'keyup change', function () {
+            if ( that.search() !== this.value ) {
+                that
+                    .search( this.value )
+                    .draw();
+            }
+        } );
+    } );
+} );
+  </script>
   </div>
 </body>
 
