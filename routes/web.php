@@ -51,7 +51,14 @@ Route::get('register', function () {
     return view('resigter');
 });
 
-//Route::resource('tables', 'PareriController');
+Route::get('nuovoparere', function () {
+		return view('nuovoparere');
+});
+
+Route::resource('/tables/register', 'ParereController');
+
+
+//Route::resource('tables', 'ParereController');
 
 
 Auth::routes();

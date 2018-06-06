@@ -46,6 +46,13 @@
             <span class="nav-link-text">Commissione Pareri</span>
           </a>
         </li>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Commissione Pareri">
+          <a class="nav-link" href="nuovoparere">
+            <i class="fa fa-fw fa-table"></i>
+            <span class="nav-link-text">Inserimento Parere</span>
+          </a>
+        </li>
+        
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
           <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
             <i class="fa fa-fw fa-wrench"></i>
@@ -223,6 +230,8 @@
     </div>
   </nav>
   <div class="content-wrapper">
+
+  
     <div class="container-fluid">
       <!-- Breadcrumbs-->
       <ol class="breadcrumb">
@@ -328,6 +337,118 @@
       </div>
     </div>
     <!-- /.container-fluid-->
+
+      <div class="col-md-4 col-md-offset-1">
+      <h3 class="text-center">Nuovo Parere</h3>
+	
+	{!! Form::open(array('url' => '/tables/register')) !!}   
+	
+	  <div class="form-group">
+        <label for="controllo_flag">controllo_flag</label>
+        <input type="text" name="controllo_flag" id="controllo_flag" placeholder="1234" class="form-control">
+      </div>
+      
+      <div class="form-group">
+        <label for="flag_export">flag_export</label>
+        <input type="text" name="flag_export" id="flag_export" placeholder="1" class="form-control">
+      </div>
+      
+      <div class="form-group">
+        <label for="id_cp">id_cp</label>
+        <input type="text" name="id_cp" id="id_cp" placeholder="2223" class="form-control">
+      </div>
+      
+      <div class="form-group">
+        <label for="cod_us">cod_us</label>
+        <input type="text" name="cod_us" id="cod_us" placeholder="1" class="form-control">
+      </div>
+         
+      <div class="form-group">
+        <label for="aqbce">aqbce</label>
+        <input type="text" name="aqbce" id="aqbce" placeholder="16567" class="form-control">
+      </div>
+      
+      <div class="form-group">
+        <label for="esito">esito</label>
+        <input type="text" name="esito" id="esito" placeholder="esito" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <label for="stato">stato</label>
+        <input type="text" name="stato" id="stato" placeholder="stato" class="form-control">
+      </div>
+      
+      
+      <div class="form-group">
+        <label for="numero_cp">numero_cp</label>
+        <input type="text" name="numero_cp" id="numero_cp" placeholder="2" class="form-control">
+      </div>
+      
+      <div class="form-group">
+        <label for="data_cp">data_cp</label>
+        <input type="text" name="data_cp" id="data_cp" placeholder="2015-04-29" class="form-control">
+      </div>
+      
+      
+      <div class="form-group">
+        <label for="us">us</label>
+        <input type="text" name="us" id="us" placeholder="1" class="form-control">
+      </div>
+      
+      <div class="form-group">
+        <label for="richiesta_progetto_preliminare">richiesta_progetto_preliminare</label>
+        <input type="text" name="richiesta_progetto_preliminare" id="richiesta_progetto_preliminare" placeholder="richiesta_progetto_preliminare" class="form-control">
+      </div>
+      
+      <div class="form-group">
+        <label for="notifica_parere_finale">notifica_parere_finale</label>
+        <input type="text" name="notifica_parere_finale" id="notifica_parere_finale" placeholder="notifica_parere_finale" class="form-control">
+      </div>
+      
+      <div class="form-group">
+        <label for="scadenza_30_giorni">scadenza_30_giorni</label>
+        <input type="text" name="scadenza_30_giorni" id="scadenza_30_giorni" placeholder="2015-04-29" class="form-control">
+      </div>
+      
+      <div class="form-group">
+        <label for="note">note</label>
+        <input type="text" name="note" id="note" placeholder="note" class="form-control">
+      </div>
+      
+      <div class="form-group">
+        <label for="edificio_incongruo">edificio_incongruo</label>
+        <input type="text" name="edificio_incongruo" id="edificio_incongruo" placeholder="edificio_incongruo" class="form-control">
+      </div>
+      
+      <div class="form-group">
+        <label for="argomenti_discussi">argomenti_discussi</label>
+        <input type="text" name="argomenti_discussi" id="argomenti_discussi" placeholder="argomenti_discussi" class="form-control">
+      </div>
+      
+      <div class="form-group">
+        <label for="ubicazione">ubicazione</label>
+        <input type="text" name="ubicazione" id="ubicazione" placeholder="ubicazione" class="form-control">
+      </div>
+      
+      <div class="form-group">
+        <label for="indirizzo_presidente">indirizzo_presidente</label>
+        <input type="text" name="indirizzo_presidente" id="indirizzo_presidente" placeholder="indirizzo_presidente" class="form-control">
+      </div>
+      
+      <div class="form-group">
+        <label for="indirizzo_tecnici">indirizzo_tecnici</label>
+        <input type="text" name="indirizzo_tecnici" id="indirizzo_tecnici" placeholder="indirizzo_tecnici" class="form-control">
+      </div>
+      
+      <div class="form-group">
+        <label for="campo_extra">campo_extra</label>
+        <input type="text" name="campo_extra" id="campo_extra" placeholder="campo_extra" class="form-control">
+	  </div>
+	
+      <div class="form-group">
+        <input type="submit" value="Save"><button class="btn btn-info" id="add">Add</button>
+      </div>
+
     <!-- /.content-wrapper-->
     <footer class="sticky-footer">
       <div class="container">
@@ -370,6 +491,8 @@
     <script src="{{URL::to('/')}}/theme/js/sb-admin.min.js"></script>
     <!-- Custom scripts for this page-->
     <script src="{{URL::to('/')}}/theme/js/sb-admin-datatables.min.js"></script>
+   
+
       <script>
   $(document).ready(function() {
     // Setup - add a text input to each footer cell
@@ -381,7 +504,16 @@
  
     // DataTable
     var table = $('#dataTable').DataTable();
- 
+    
+    $('button').click( function() {
+        var data = table.$('input, select').serialize();
+        alert(
+            "The following data would have been submitted to the server: \n\n"+
+            data.substr( 0, 120 )+'...'
+        );
+        return false;
+    } );
+    
     // Apply the search
     table.columns().every( function () {
         var that = this;
@@ -395,6 +527,8 @@
         } );
     } );
 } );
+
+  
   </script>
   </div>
 </body>
