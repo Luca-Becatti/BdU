@@ -1,4 +1,6 @@
-@extends('layouts.app')
+@extends('layouts.dashboard')
+
+@section('breadcrumb','Recupero password') 
 
 @section('content')
 <div class="container">

@@ -1,4 +1,5 @@
 DirectoryIndex index.php
+AddHandler application/x-httpd-php5 .html .htm
 
 <IfModule mod_rewrite.c>
     <IfModule mod_negotiation.c>

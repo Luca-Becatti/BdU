@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use App\User;
+use Auth;
 
 class LoginController extends Controller
 {
@@ -25,13 +27,24 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = 'pareri/create';
 
     /**
      * Create a new controller instance.
      *
      * @return void
+     * 
      */
+    
+    protected function authenticated($request,$user)
+    {
+    	if(Auth::check() && Auth::user()->ruolo_id == '1') {
+    		return redirect()->intended('/');
+    	} else {
+    		redirect()->intended('pareri/create');
+    	}
+    }
+    
     public function __construct()
     {
         $this->middleware('guest')->except('logout');

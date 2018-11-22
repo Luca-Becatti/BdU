@@ -3,12 +3,14 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\Role;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
 class RegisterController extends Controller
+
 {
     /*
     |--------------------------------------------------------------------------
@@ -28,7 +30,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = 'pareri';
 
     /**
      * Create a new controller instance.
@@ -48,11 +50,19 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
+    	$messages = [
+    			'nome.required' => 'Nome obbligatorio',
+    			'nome.string' => "Il Nome deve essere composto da soli caratteri",
+    			'nome.max' => "Il nome può contenere massimo 255 caratteri",
+    			'password.confirmed' => 'La conferma della password non corrisponde',
+    			//il campo Edificio_incongruo non è necessario perchè quando non viene passato il valore di default è 0.
+    	];
+    	
         return Validator::make($data, [
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6|confirmed',
-        ]);
+            'nome' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:bdu_utenti', //Modificata la riga. bdu_utenti prima era users
+            'password' => 'required|string|min:4|confirmed',
+        ],$messages);
     }
 
     /**
@@ -63,10 +73,17 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
+    	
+        $user =  User::create([
+            'nome' => $data['nome'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+        /*
+        $user
+        ->roles()
+        ->attach(Role::where('name', 'guest')->first());
+       */
+        return $user;
     }
 }
