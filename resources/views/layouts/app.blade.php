@@ -20,7 +20,7 @@
   <link href="{{URL::to('/')}}/theme/vendor/datatables/buttons.dataTables.min.css" rel="stylesheet">
 </head>
 
-<body class="fixed-nav sticky-footer bg-dark" id="page-top">
+<body class="fixed-nav sticky-footer bg-dark" id="page-top" style ="zoom: 0.8">
 @yield('body')
     
 @include('layouts.footer')
