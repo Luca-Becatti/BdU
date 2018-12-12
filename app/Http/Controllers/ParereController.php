@@ -165,6 +165,12 @@ class ParereController extends Controller
 	
 	public function update(Request $request, $id)
     {
+    	if ($request->hasFile('documento')){
+    	
+    		$filename = $request->file('documento')->getClientOriginalName();
+    		$request->file('documento')->storeAs('documents',$filename);
+    		//$url = public_path('app/public/documents/' . $filename);
+    	}
 		
     	$isCheckedRichiestaPP = $request->has('richiesta_progetto_preliminare');    	
     	$isCheckedEdificioIncongruo = $request->has('edificio_incongruo');
@@ -184,6 +190,8 @@ class ParereController extends Controller
     	$parere->note = $request->get("note");
     	$parere->numero_protocollo = $request->get("numero_protocollo");
     	$parere->data_protocollo = $request->get("data_protocollo");
+    	$parere->documento = $filename;
+    	$parere->utente_id = Auth::user()->id_utente;
     	$parere->save();
     	return view('pareri.form', ['action' => 'edit', 'parere' => $parere]);
     }
@@ -234,7 +242,7 @@ class ParereController extends Controller
 					<a href="pareri/'.$parere->id_commissione_pareri.'/edit" style= "margin-right: 0.333em !important; padding: 0.2em 0.6em;" class="dt-button fa fa-pencil"></a>
 					<a href="#" id="'.$parere->id_commissione_pareri.'" style= "margin-right: 0.333em !important; padding: 0.2em 0.6em;" class="dt-button fa fa-trash-o delete"></a>
 					<a href="pareri/'.$parere->id_commissione_pareri.'/'.$parere->localita.'" style= "margin-right: 0.333em !important; padding: 0.2em 0.6em;" class="dt-button fa fa-plus-circle"></a>
-					<a href="/bdu/storage/app/public/documents/'.$parere->documento.'" style= "margin-right: 0.333em !important; background: #88b9c0 !important; padding: 0.2em 0.6em;" class="dt-button fa fa-floppy-o" id = "open"></a>
+					<a href="/storage/documents/'.$parere->documento.'" style= "margin-right: 0.333em !important; background: #88b9c0 !important; padding: 0.2em 0.6em;" class="dt-button fa fa-floppy-o" id = "open"></a>
 					</div>';
 			}
 			else {

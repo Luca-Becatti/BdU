@@ -38,7 +38,7 @@
 					
 					@else 
 
-					<a href="/bdu/storage/app/public/documents/<?php echo $parere->documento ?>" style= "margin-right: 0.333em !important; padding: 0.2em 0.6em;" class="dt-button fa fa-floppy-o" id = "open"></a>
+					<a href="/bdu5.6/storage/app/public/documents/<?php echo $parere->documento ?>" style= "margin-right: 0.333em !important; padding: 0.2em 0.6em;" class="dt-button fa fa-floppy-o" id = "open"></a>
 
 					@endempty
 
